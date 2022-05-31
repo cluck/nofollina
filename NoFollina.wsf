@@ -12,8 +12,8 @@
 				WScript.Quit
 			End If
 
-            ' objShell.Run "rem reg delete HKEY_CLASSES_ROOT\ms-msdt /f"
-			objShell.Run "powershell -ExecutionPolicy bypass -Command Rename-Item -Path HKCR:\ms-msdt -NewName ms-msdt-nofollina -Force"
+            
+			objShell.Run "reg delete HKEY_CLASSES_ROOT\ms-msdt /f"
 		']]>
 	</script>
 </job>
