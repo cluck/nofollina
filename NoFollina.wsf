@@ -1,0 +1,19 @@
+<job>
+	<script language="VBScript">
+		'<![CDATA[
+			Set objShell = CreateObject("WScript.Shell")
+
+			For Each Argument In WScript.Arguments
+				If LCase(Argument) = "/isadmin" Then IsAdmin = True
+			Next
+
+			If Not IsAdmin Then
+				objShell.Run "powershell start -Verb RunAs wscript '\""" & WScript.ScriptFullName & "\"" /IsAdmin'", 0
+				WScript.Quit
+			End If
+
+            ' objShell.Run "rem reg delete HKEY_CLASSES_ROOT\ms-msdt /f"
+			objShell.Run "powershell -ExecutionPolicy bypass -Command Rename-Item -Path HKCR:\ms-msdt -NewName ms-msdt-nofollina -Force"
+		']]>
+	</script>
+</job>
